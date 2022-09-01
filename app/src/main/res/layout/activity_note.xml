@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddNoteActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/editTextReadNoteTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:backgroundTint="#181818"
+            android:ems="10"
+            android:textColor="@color/white"
+            android:hint="Title"
+            android:inputType="textPersonName"
+            android:textColorHint="#8C8C8C"
+            android:textSize="48sp" />
+
+        <EditText
+            android:id="@+id/editTextReadNoteBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:textColor="@color/white"
+            android:backgroundTint="#181818"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="write something..."
+            android:inputType="textMultiLine"
+            android:textColorHint="#8C8C8C"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+
+</ScrollView>
+

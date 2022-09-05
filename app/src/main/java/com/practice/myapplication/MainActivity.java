@@ -16,6 +16,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Color;
+import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -81,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
 
                 int swipedPositionn = viewHolder.getAdapterPosition();
-                NoteEntity swipedNote = adapter.getNote(viewHolder.getAdapterPosition());
+                NoteEntity swipedNote = adapter.getNote(swipedPositionn);
 
                 viewModel.delete(swipedNote);
                // adapter.notifyItemRemoved(swipedPositionn);
@@ -137,7 +139,8 @@ public class MainActivity extends AppCompatActivity {
                         if(resultCode == RESULT_OK && data != null){
                             String userTitle = data.getStringExtra("usertitle");
                             String userBody = data.getStringExtra("userbody");
-                            NoteEntity note = new NoteEntity(userTitle, userBody);
+                            String theDate = getCurrentDate();
+                            NoteEntity note = new NoteEntity(userTitle, userBody, theDate);
                             viewModel.insert(note);
                         }
                     }
@@ -157,9 +160,10 @@ public class MainActivity extends AppCompatActivity {
                         if (resultCode == RESULT_OK && i != null) {
                             String newTitle = i.getStringExtra("title");
                             String newBody = i.getStringExtra("body");
+                            String theDate = getCurrentDate();
                             int noteID = i.getIntExtra("id", -1);
 
-                            NoteEntity updatedNote = new NoteEntity(newTitle, newBody);
+                            NoteEntity updatedNote = new NoteEntity(newTitle, newBody, theDate);
                             updatedNote.setId(noteID);
                             viewModel.update(updatedNote);
                         }
@@ -181,6 +185,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //This method will return the current date of the android phone
+    public String getCurrentDate() {
+        Date date = Calendar.getInstance().getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YY");
+        String time = sdf.format(date);
+        return time;
+    }
 
 
 }

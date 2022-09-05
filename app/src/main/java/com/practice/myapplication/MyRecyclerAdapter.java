@@ -46,6 +46,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
 
         holder.title.setText(currentNote.getTitle());
         holder.description.setText(currentNote.getDescription());
+        holder.date.setText(currentNote.getDate());
 
         if (position % 5 == 0)
             holder.itemBackground.setCardBackgroundColor(ContextCompat.getColor(context,R.color.item1));
@@ -60,7 +61,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
 
 
         /*I used a listener to the get the time and title of the item the notification was set for.
-        So, I will get the values from the mainactivivytand start the service for notification receiver
+        So, I will get the values from the mainactivivy and start the service for notification receiver
          */
         String holderTitle = holder.title.getText().toString();
         holder.notify.setOnClickListener(new View.OnClickListener() {

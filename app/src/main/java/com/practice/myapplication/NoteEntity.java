@@ -13,9 +13,12 @@ public class NoteEntity {
 
     private String description;
 
-    public NoteEntity(String title, String description) {
+    private String date;
+
+    public NoteEntity(String title, String description, String date) {
         this.title = title;
         this.description = description;
+        this.date = date;
     }
 
     public int getId() {
@@ -28,6 +31,10 @@ public class NoteEntity {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getDate() {
+        return date;
     }
 
     public void setId(int id) {

@@ -42,7 +42,7 @@ public abstract class NoteDatabase extends RoomDatabase {
             executor.execute(new Runnable() {
                 @Override
                 public void run() {
-                    noteDao.insert(new NoteEntity("Hello", "Dave"));
+                    noteDao.insert(new NoteEntity("Hello", "Dave", "5/9/22"));
                 }
             });
 

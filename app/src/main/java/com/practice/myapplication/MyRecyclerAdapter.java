@@ -45,7 +45,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
         NoteEntity currentNote = notes.get(position);
 
         holder.title.setText(currentNote.getTitle());
-        holder.description.setText(currentNote.getDescription());
+        holder.description.setText(shortenString(currentNote.getDescription()));
         holder.date.setText(currentNote.getDate());
 
         if (position % 5 == 0)
@@ -128,6 +128,18 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
         }
     }
 
+    public String shortenString( String essay) {
+       if(essay != null){
+          if (essay.length() < 25){
+              return essay;
+          }else{
+              String shorter = essay.substring(0, 24);
+              return shorter + "...";
+          }
+       }else{
+           return "";
+       }
+    }
 
     interface MyOnItemClickListener {
         void myOnItemClick(NoteEntity note);
